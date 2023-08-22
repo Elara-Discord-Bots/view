@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>Elara Services</title>
+    <meta property="og:site_name" content="Elara Services">
+    <meta property="og:title" content="Pastebin">
+<meta property="og:image" content="https://cdn.elara.workers.dev/d/icons/Elara.png">
+<meta name="theme-color" content="#0669bf">
+<meta property="og:description" content="Elara Services">
+  </head>
+  <%- include("./partials/basic")%>
+<body>
+    <pre><code class="lang-<%= lang %>"><%=content%></code></pre>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css"/>
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html> 

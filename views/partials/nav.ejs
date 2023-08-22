@@ -1,0 +1,154 @@
+<div class="navbar">
+  <div class="drophm">
+<button class="dbtn" onclick="NavBar()"><img onclick="NavBar()" src="https://cdn.elara.workers.dev/d/icons/Elara.png" class="nav-img"> Elara Services</button> 
+  <div id="myNavBar" class="drops-content">
+    <a href="https://services.elara.workers.dev/terms">Terms</a>
+    <a href="https://services.elara.workers.dev/privacy">Privacy</a>
+  </div>
+</div>
+  
+<!--   Ending main div -->
+</div>
+
+
+<!-- The Scripts -->
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function NavBar() {
+  document.getElementById("myNavBar").classList.toggle("shows");
+}
+function Profile() {
+  document.getElementById("myProfile").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.profilebtn')) {
+    var dropdowns = document.getElementsByClassName("profile-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }else
+  if (!event.target.matches('.dbtn')) {
+    var dropdowns = document.getElementsByClassName("drops-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('shows')) {
+        openDropdown.classList.remove('shows');
+      }
+    }
+  }
+}
+</script>
+
+<!-- The Styling  -->
+<style>
+  
+  /* Navbar Images */
+  .nav-img {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  
+/*  Profile  */
+.profilebtn {
+    position: relative; 
+    font-size: 20px; 
+    cursor: pointer; 
+    background-color: #0362b3; 
+    color: silver; 
+    padding: 15px 20px; 
+    border: 2px 2px silver;
+    outline: none;
+}
+
+.profilebtn:hover, .profilebtn:focus {
+  background-color: #0362b3;
+  color: white;
+}
+
+.profiles {
+  position: relative;
+  display: inline-block;
+  border: 2px 2px silver;
+}
+
+.profile-content {
+  display: none;
+  position: absolute;
+  background-color: #0362b3;
+  color: silver;
+  min-width: 100%;
+  overflow: auto;
+  border: 2px 2px silver;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.profile-content a {
+  color: silver;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.profiles a:hover {background-color: black; color: white;border: 2px 2px silver;}
+
+.show {display: block;}
+    
+/* The Main Page */
+.dbtn {
+    position: relative; 
+    font-size: 20px; 
+    cursor: pointer; 
+    background-color: #0362b3; 
+    color: silver; 
+    padding: 15px 20px; 
+    border: 2px 2px silver;
+    outline: none;
+}
+
+.dbtn:hover, 
+.dbtn:focus {
+  background-color: #0362b3;
+  color: white;
+}
+
+.drophm {
+  position: relative;
+  display: inline-block;
+  border: 2px 2px silver;
+}
+
+.drops-content {
+  display: none;
+  position: absolute;
+  background-color: #0362b3;
+  color: silver;
+  min-width: 100%;
+  overflow: auto;
+  border: 2px 2px silver;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.drops-content a {
+  color: silver;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.drophm a:hover {background-color: black; color: white;border: 2px 2px silver;}
+
+.shows {display: block;}
+    
+</style>
