@@ -82,6 +82,7 @@ app.post("/settings/:id", async (req, res) => {
     let data = {};
     try {
         data = JSON.parse(JSON.stringify(r.content));
+    // eslint-disable-next-line no-empty
     } catch { }
     if (!Object.keys(data).length) {
         return res.json({ status: false, message: `Unable to fetch the data from the paste.` });
@@ -89,6 +90,27 @@ app.post("/settings/:id", async (req, res) => {
     return res
         .type("text/html")
         .render("settings", { data, newData: JSON.parse(data) });
+});
+
+app.get("/v/:id", async (req, res) => {
+    const { id } = req.params;
+    if (!id) {
+        return res.json({ 
+            status: false,
+            message: `Unable to find the ID`
+        })
+    }
+    const r = await fetchBin(id);
+    if (!r) {
+        return res.json({
+            status: false,
+            message: `Unable to find (${id}) in our system.`
+        })
+    }
+    return res.json({
+        status: true,
+        ...r,
+    })
 });
 
 app.post("/bin", async (req, res) => {
