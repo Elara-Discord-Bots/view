@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express"),
     fetch = require("@elara-services/fetch"),
     app = express(),
