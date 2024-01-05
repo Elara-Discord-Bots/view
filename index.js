@@ -47,6 +47,7 @@ app.post("/settings", async (req, res) => {
         message: `You failed to provide the data.`
       })
     }
+      console.log(data);
   return res
     .type("text/html")
     .render("settings", { data, newData: JSON.parse(data) });
