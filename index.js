@@ -38,7 +38,20 @@ app.post("/discord", async (req, res) => {
     .type("text/html")
     .render("index", { messages: content });
 })
-
+async function fetchBin(id) {
+    if (!process.env.DB_APIKEY) {
+        return null;
+    }
+    const res = await fetch(`http://api.superchiefyt.xyz:5050/servers/b/v/${id}?key=${process.env.DB_APIKEY}`).catch((e) => e);
+    if (res instanceof Error || res.status !== 200) {
+        return null;
+    }
+    const json2 = await res.json();
+    if (!json2.status) {
+        return null;
+    }
+    return json2.data;
+}
 app.post("/settings", async (req, res) => {
     const { data } = req.body;
     if (!data) {
@@ -47,7 +60,29 @@ app.post("/settings", async (req, res) => {
         message: `You failed to provide the data.`
       })
     }
-      console.log(data);
+  return res
+    .type("text/html")
+    .render("settings", { data, newData: JSON.parse(data) });
+});
+app.post("/settings/:id", async (req, res) => {
+    const { id } = req.params;
+    if (!id) {
+      return res.json({
+        status: false, 
+        message: `You failed to provide the id.`
+      })
+    }
+  const r = await fetchBin(id);
+  if (!r) {
+      return res.json({ status: false, message: `Unable to fetch the data.` });
+  }
+  let data = {};
+  try {
+     data = JSON.parse(JSON.stringify(data.content));
+  } catch {}
+  if (!Object.keys(data).length) {
+      return res.json({ status: false, message: `Unable to fetch the data from the paste.` });
+  }
   return res
     .type("text/html")
     .render("settings", { data, newData: JSON.parse(data) });
