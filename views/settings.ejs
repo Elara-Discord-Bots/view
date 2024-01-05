@@ -883,7 +883,7 @@
                 counter++;
 
                 if (set.message.content) {
-                    result.push(`<div><h4>message content</h4><discord-messages><discord-message author="Pinned Msg" bot="true" avatar="https://cdn.discordapp.com/emojis/658538493202530336.png">${set.message.content}</discord-message></discord-messages></div>`);
+                    result.push(`<div><h4>message content</h4><discord-messages><discord-message author="Pinned Msg" bot="true" avatar="https://cdn.discordapp.com/emojis/658538493202530336.png">${set.message.content}${set.message.embeds.length ? set.message.embeds.map(c => createEmbed(c)).join("") : ""}</discord-message></discord-messages></div>`);
                     counter++;
                 }
 
