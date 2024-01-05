@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@elara-services/fetch": "^1.0.1",
+    "@elara-services/fetch": "1.0.1",
     "@types/node": "^18.0.6",
     "body-parser": "^1.20.0",
     "ejs": "^3.1.8",
