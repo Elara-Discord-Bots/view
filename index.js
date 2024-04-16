@@ -40,10 +40,10 @@ app.post("/discord", async (req, res) => {
         .render("index", { messages: content });
 })
 async function fetchBin(id) {
-    if (!process.env.DB_APIKEY) {
+    if (!process.env.DB_APIKEY || !process.env.DB_URL) {
         return null;
     }
-    const res = await fetch(`http://api.superchiefyt.xyz:5050/services/b/v/${id}?key=${process.env.DB_APIKEY}`).send().catch((e) => e);
+    const res = await fetch(`${process.env.DB_URL}/services/b/v/${id}?key=${process.env.DB_APIKEY}`).send().catch((e) => e);
     if (res instanceof Error || res.statusCode !== 200) {
         return null;
     }
